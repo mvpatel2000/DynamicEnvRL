@@ -17,7 +17,7 @@ import pickle
 import scipy
 import argparse
 
-def train(num_experiments, queue):
+def train(num_experiments, thread_id, queue):
 
     ############ DEFAULT PARAMETERS ############
 
@@ -31,6 +31,7 @@ def train(num_experiments, queue):
     n_pro_itr = 1                       #Number of iterations for the protaginist
     n_adv_itr = 1                       #Number of interations for the adversary
     batch_size = 4000                   #Number of training samples for each iteration
+    ifSave = True                       #Should we save?
     save_every = 100                    #Save checkpoint every save_every iterations
     n_process = 1                       #Number of parallel threads for sampling environment
     adv_fraction = 0.25                 #Fraction of maximum adversarial force to be applied
@@ -40,28 +41,28 @@ def train(num_experiments, queue):
 
     ############ ENV SPECIFIC PARAMETERS ############
 
-    env_name = 'SwimmerAdv-v1'
+    env_name = 'HalfCheetahAdv-v1'
 
     layer_size = tuple([64,64])
-    step_size = 0.01
-    gae_lambda = 0.97
+    step_size = 0.02
+    gae_lambda = 0.95
     batch_size = 25000
 
     n_exps = num_experiments
-    n_itr = 2 #TODO: Update this to 500
-    save_every = 20
+    n_itr = 500
+    ifSave = False
     n_process = 4
 
-    adv_fraction = 5.0
+    adv_fraction = 7.0
 
-    save_dir = './results/StaticSwimmer'
+    save_dir = './../results/StaticCheetah'
 
     args = [env_name, path_length, layer_size, ifRender, afterRender, n_exps, n_itr, n_pro_itr, n_adv_itr, 
             batch_size, save_every, n_process, adv_fraction, step_size, gae_lambda, save_dir]
 
     ############ ADVERSARIAL POLICY LOAD ############
 
-    filepath = 'initial_results/Swimmer/env-SwimmerAdv-v1_Exp1_Itr500_BS25000_Adv0.25_stp0.01_lam0.97_435321.p'
+    filepath = './../initial_results/Cheetah/env-HalfCheetahAdv-v1_Exp1_Itr500_BS25000_Adv0.25_stp0.02_lam0.95_95277.p'
     res_D = pickle.load(open(filepath,'rb'))
     pretrained_adv_policy = res_D['adv_policy']
 
@@ -140,7 +141,7 @@ def train(num_experiments, queue):
 
         ## Beginning alternating optimization ##
         for ni in range(n_itr):
-            logger.log('\n\nExperiment: {} Iteration: {}\n'.format(ne,ni,))
+            logger.log('\n\nThread: {} Experiment: {} Iteration: {}\n'.format(thread_id, ne,ni,))
             
             ## Train Protagonist
             pro_algo.train()
@@ -157,7 +158,7 @@ def train(num_experiments, queue):
             if ni%afterRender==0 and ifRender==True:
                 test_const_adv(env, pro_policy, path_length=path_length, n_traj=1, render=True);
 
-            if ni!=0 and ni%save_every==0:
+            if ni!=0 and ni%save_every==0 and ifSave==True:
                 ## SAVING CHECKPOINT INFO ##
                 pickle.dump({'args': args,
                              'pro_policy': pro_policy,
@@ -198,19 +199,21 @@ def train(num_experiments, queue):
 
 if __name__ == '__main__':
     
-    num_threads = 1
-    n_exps = 10
+    num_threads = 12
+    n_exps = 3
 
     queue = Queue()
     pool = []
     results = []
 
     for i in range(num_threads):
-        p = Process(target=train, args=(n_exps, queue,))
+        p = Process(target=train, args=(n_exps, i, queue,))
         pool.append(p)
         
     for process in pool:
         process.start()
+
+    for process in pool:
         results.append(queue.get())
 
     for process in pool:
@@ -223,7 +226,7 @@ if __name__ == '__main__':
                 summary[i].append(exp)
 
 
-    with open('results/StaticSwimmer/static_swimmer'+'.p','wb') as f:
+    with open('./../results/StaticCheetah/static_cheetah'+'.p','wb') as f:
         pickle.dump({
             'zero_test': summary[0],         #const_test_rew_summary
             'rand_test': summary[1],         #rand_test_rew_summary
