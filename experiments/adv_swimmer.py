@@ -64,7 +64,7 @@ def train(num_experiments, thread_id, queue):
 
     ############ ADVERSARIAL POLICY LOAD ############
 
-    filepath = 'results/Swimmer/env-SwimmerAdv-v1_Exp1_Itr500_BS25000_Adv0.25_stp0.01_lam0.97_435321.p'
+    filepath = './../initial_results/Swimmer/env-SwimmerAdv-v1_Exp1_Itr500_BS25000_Adv0.25_stp0.01_lam0.97_435321.p'
     res_D = pickle.load(open(filepath,'rb'))
     pretrained_adv_policy = res_D['adv_policy']
 
