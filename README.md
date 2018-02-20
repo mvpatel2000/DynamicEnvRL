@@ -1,3 +1,5 @@
+This research is still under progress. Current tasks include cleaning up the rllab folder, which is currently not pushed to the repository. This folder requires upgrades to pytorch for faster training as it currently uses theano, which is substantially slower. Additionally, more extensive testing is being done to verify results on a greater bredth of benchmark problems.
+
 # DynamicEnvRL
 This document is an expanded version of the README.md from the submitted github repository zip. It fleshes out individual components in greater depth.<br/>
 
