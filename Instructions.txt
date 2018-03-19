@@ -1,5 +1,6 @@
 Activating rllab:
 export PYTHONPATH=~/RLEnv/rllab:$PYTHONPATH
+export PYTHONPATH=~/Downloads/rllab:$PYTHONPATH
 
 Allowing modern gcc on cluster:
 scl enable devtoolset-7 bash
