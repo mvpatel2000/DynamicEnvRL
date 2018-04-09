@@ -6,7 +6,6 @@ from rllab.policies.gaussian_mlp_policy import GaussianMLPPolicy
 from rllab.policies.constant_control_policy import ConstantControlPolicy
 import rllab.misc.logger as logger
 from rllab.sampler import parallel_sampler
-import matplotlib.pyplot as plt
 import numpy as np
 from test import test_const_adv, test_rand_adv, test_learnt_adv, test_rand_step_adv, test_step_adv
 import pickle
