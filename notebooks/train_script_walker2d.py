@@ -34,7 +34,7 @@ save_dir = './results'              #folder to save result in
 env_name = 'Walker2dAdv-v1'
 
 layer_size = tuple([64,64])
-step_size = 0.01
+step_size = 0.1
 gae_lambda = 0.97
 batch_size = 25000
 
