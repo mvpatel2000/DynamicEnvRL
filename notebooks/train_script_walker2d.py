@@ -24,7 +24,7 @@ n_itr = 25                          #Number of iterations of the alternating opt
 n_pro_itr = 1                       #Number of iterations for the protaginist
 n_adv_itr = 1                       #Number of interations for the adversary
 batch_size = 4000                   #Number of training samples for each iteration
-save_every = 100                    #Save checkpoint every save_every iterations
+save_every = 200                    #Save checkpoint every save_every iterations
 n_process = 1                       #Number of parallel threads for sampling environment
 adv_fraction = 0.25                 #Fraction of maximum adversarial force to be applied
 step_size = 0.01                    #kl step size for TRPO
@@ -38,7 +38,7 @@ step_size = 0.01
 gae_lambda = 0.97
 batch_size = 25000
 
-n_itr = 500
+n_itr = 1500
 save_every = 20
 n_process = 4
 
