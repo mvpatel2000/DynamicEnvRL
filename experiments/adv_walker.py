@@ -41,7 +41,7 @@ def train(num_experiments, thread_id, queue):
 
     ############ ENV SPECIFIC PARAMETERS ############
 
-    env_name = 'WalkerAdv-v1'
+    env_name = 'Walker2dAdv-v1'
 
     layer_size = tuple([64,64])
     step_size = 0.1
@@ -210,8 +210,8 @@ def train(num_experiments, thread_id, queue):
 
 if __name__ == '__main__':
     
-    num_threads = 12
-    n_exps = 3
+    num_threads = 10
+    n_exps = 5
 
     queue = Queue()
     pool = []
