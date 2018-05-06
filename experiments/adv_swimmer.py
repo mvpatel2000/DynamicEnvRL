@@ -49,7 +49,7 @@ def train(num_experiments, thread_id, queue):
     batch_size = 25000
 
     n_exps = num_experiments
-    n_itr = 500
+    n_itr = 200
     ifSave = False
     n_process = 4
 
