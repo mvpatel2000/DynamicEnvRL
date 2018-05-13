@@ -33,4 +33,4 @@ For parallelization, each script calls n threads which each run m experiments on
 This folder stores the output and results from the scripts. This consists of a single pickle file which contains the aggregate results from all 36 trials for that benchmark problem. These are later loaded into other jupyter notebooks for analysis.
 
 ## Other Notebooks
-There are three jupyter notebooks outside of any folder. These are used for generating graphs and analysis of results collected from the scripts. This includes reward per iteration graph, the percentile distribution of final policies graph, and images captured from visualizations.
+There are four jupyter notebooks outside of any folder. These are used for generating graphs and analysis of results collected from the scripts. This includes reward per iteration graph, the percentile distribution of final policies graph, and images captured from visualizations.
