@@ -1,4 +1,6 @@
 # DynamicEnvRL
+This research aims to analyze trajectory mining behavior for reinforcement learning. Essentially, it looks at how reinforcement learning simulations affect training time and performance for robotic applications.
+
 The rllab folder is a modified fork of the public repository rllab. This contains the code to sample from environments, update policies, implementation of TRPO, testing code and far more. The vast majority of software is within here so the primary scripts are relatively small and readable. The notebooks folder contains various jupyter notebooks for prototyping and visualizations. The experiments folder contains the jupyter notebook code converted to a single file with the inclusion of threads for parallelization. Initial Results has the duel policies and was used for prototyping. Results contains the final results. Other notebooks exist outside folders for result analysis.<br/>
 
 Note that running the software requires several installations. The primary ones are OpenAI Gym, MuJoCo, and jupyter notebook. Adding rllab to the python path is also required. There are several additional dependencies that can easily be installed with apt install on a linux machine such as theano, lasagne, and tensorflow.
