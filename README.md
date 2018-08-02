@@ -6,9 +6,9 @@ The rllab folder is a modified fork of the public repository rllab. This contain
 Note that running the software requires several installations. The primary ones are OpenAI Gym, MuJoCo, and jupyter notebook. Adding rllab to the python path is also required. There are several additional dependencies that can easily be installed with apt install on a linux machine such as theano, lasagne, and tensorflow.
 
 ## rllab
-NOTE: Currently, rllab is not being pushed to the repo due to its size. The final version will be uploaded upon completion. The current version can be accessed by emailing the user.
+NOTE: rllab is not being pushed to the repo due to its size.
 
-The local folder of rllab is the one used in this research. This is a fork that blends together pieces from rllab-adv, an offshoot that was developed by lerrel but discontinued. It also contains several modernizations and upgrades as rllab has not been sufficiently maintained. Upon completion of this research, a pull request will be submitted that includes these upgrades. A new version of rllab-adv will also be released. <br/>
+The local folder of rllab is the one used in this research. This is a fork that blends together pieces from rllab-adv, an offshoot that was developed by lerrel but discontinued. It also contains a few modernizations and upgrades as rllab has not been sufficiently maintained. <br/>
 
 This framework is rather extensive and complicated. Slight updates are made to almost every subfolder to allow for handling two policies within one environment. The key point of modification is under rllab/rllab/policies. This includes some algorithmic variations and other testings that allow for two policies.
 
@@ -36,6 +36,3 @@ This folder stores the output and results from the scripts. This consists of a s
 
 ## Other Notebooks
 There are four jupyter notebooks outside of any folder. These are used for generating graphs and analysis of results collected from the scripts. This includes reward per iteration graph, advantage in reward graph, percentile distribution of final policies graph, and images captured from visualizations. They are also used for various demonstration purposes at presentations.
-
-# Future Work
-Currently, more sample and demo codes are being developed to allow other users to verify and incorporate this technique in a more streamlined fashion. The research will be submitted to CoRL 2018.
